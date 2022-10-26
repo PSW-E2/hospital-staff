@@ -2,7 +2,7 @@
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Patient</mat-label>
-            <mat-select  [(ngModel)]="appointment.patientId">
+            <mat-select  [(ngModel)]="appointment.patientId" disabled>
                 <mat-option *ngFor="let patient of patients" [value]="patient.patientId">
                   {{patient.name}} {{patient.surname}}
                 </mat-option>
@@ -11,7 +11,7 @@
       
         <mat-form-field appearance="fill">
             <mat-label>Date</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="appointment.date">
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="appointment.date" >
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
         </mat-form-field><br>
@@ -22,6 +22,7 @@
                 <mat-option *ngFor="let time of times" [value]="time.value">
                   {{time.viewValue}}
                 </mat-option>
+            
             </mat-select>
         </mat-form-field><br>
         <button mat-stroked-button (click)="updateAppointment()">

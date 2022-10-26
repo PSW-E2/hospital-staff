@@ -12,6 +12,7 @@ import { ActivatedRoute, Router, Params } from "@angular/router";
 })
 export class UpdateAppointmentComponent implements OnInit {
   public appointment: Appointment = new Appointment();
+  public date: Date = new Date();
   public patients: Patient[] = [];
   startDate = new Date();
   
@@ -43,15 +44,15 @@ export class UpdateAppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-    
       this.appointmentService.getAppointment(params['id']).subscribe(res => {
         this.appointment = res;
         this.appointment.time = this.checkTime(this.appointment.time)
+        this.date = this.appointment.date;
       }) 
 
     });
     this.patientService.getPatients().subscribe(res => {
-      this.patients = res;
+    this.patients = res;
       
   });
  
@@ -59,7 +60,7 @@ export class UpdateAppointmentComponent implements OnInit {
   }
 
   public updateAppointment() {
-    
+      this.checkDateFormat();
       this.appointmentService.updateAppointment(this.appointment).subscribe(
       );
       this.router.navigate(['/appointments']);
@@ -78,5 +79,11 @@ export class UpdateAppointmentComponent implements OnInit {
     
     }
 
+  checkDateFormat(){
+      if(this.date===this.appointment.date){
+      this.appointment.date = new Date(this.appointment.date);
+      }
+
+  }
   
 }

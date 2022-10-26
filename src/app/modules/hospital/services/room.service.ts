@@ -30,6 +30,6 @@ export class RoomService {
   }
 
   updateRoom(room: any): Observable<any> {
-    return this.http.put<any>(this.apiHost + 'api/rooms/' + room.id, room, {headers: this.headers});
+    return this.http.put<any>(this.apiHost + 'api/rooms/' + room.roomId, room, {headers: this.headers});
   }
 }

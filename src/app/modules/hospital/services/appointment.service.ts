@@ -39,12 +39,6 @@ export class AppointmentService {
   }
 
   updateAppointment(appointment: any): Observable<any>{
- /*   alert(appointment.appointmentId)
-    alert(appointment.patientId)
-    alert(appointment.time)
-    alert(appointment.date)
-   */ 
-    
     appointment.date.setHours(0);
     appointment.date.setMinutes(0);
     appointment.date.setSeconds(0);
