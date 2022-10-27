@@ -20,7 +20,7 @@ export class DoctorAppointmentDisplayComponent implements OnInit {
   
   public deleteAppointment(id: number) {
     this.appoitmentService.deleteAppointment(id).subscribe(res=>
-      this.appoitmentService.getFutureAppointments(1).subscribe(res => {
+      this.appoitmentService.getDoctorAppointments(1).subscribe(res => {
         this.appointments = res;
         
       }) 
@@ -45,7 +45,7 @@ return time ;
 }
 
   ngOnInit(): void {
-    this.appoitmentService.getFutureAppointments(1).subscribe(res => {
+    this.appoitmentService.getDoctorAppointments(1).subscribe(res => {
       this.appointments = res;
       
     }); 
