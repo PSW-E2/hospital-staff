@@ -18,10 +18,15 @@ export class RoomsComponent implements OnInit {
   constructor(private roomService: RoomService, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.roomService.getRoom(1).subscribe(res => {
+    })
+
     this.roomService.getRooms().subscribe(res => {
       this.rooms = res;
       this.dataSource.data = this.rooms;
     })
+
   }
 
   public chooseRoom(id: number) {
@@ -29,6 +34,7 @@ export class RoomsComponent implements OnInit {
   }
 
   public updateRoom(id: number) {
+   
     this.router.navigate(['/rooms/' + id + '/update']);
   }
 
